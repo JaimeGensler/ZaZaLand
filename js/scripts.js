@@ -8,10 +8,15 @@ Order.prototype.setPrice = function() {
   this.pizzas.forEach(function(pizza) {
     runningTotal += pizza.price;
   });
+  runningTotal *= ((this.pizzas.length > 7) 1.18 : 1.00); //automatic 18% gratuity when ordering 8 or more pizzas
 
   runningTotal.toFixed(2);
   this.price = runningTotal;
   return runningTotal;
+}
+Order.prototype.addPizza = function(pizza) {
+  this.pizzas.push(pizza);
+  this.setPrice();
 }
 
 function CustomPizza(dough, sauce, proteins, veggies, others, size, count) {
@@ -66,7 +71,7 @@ CustomPizza.prototype.setPrice = function() {
 //UI Logic
 let fullOrder = new Order();
 $(document).ready(function() {
-  $("form#custom-za").submit(function(event) {
+  $("form#custom-pizza").submit(function(event) {
     event.preventDefault();
 
     let userProteins = [];
@@ -88,7 +93,6 @@ $(document).ready(function() {
 
     let newPizza = new CustomPizza(false, "Olive Oil", userProteins, userVeggies, userOthers, 8, 1);
     newPizza.setPrice();
-    fullOrder.pizzas.push(newPizza);
-    fullOrder.setPrice();
+    fullOrder.addPizza(newPizza);
   });
 });
