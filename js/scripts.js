@@ -8,18 +8,17 @@ Order.prototype.setPrice = function() {
   this.pizzas.forEach(function(pizza) {
     runningTotal += pizza.price;
   });
-  runningTotal *= ((this.pizzas.length > 7) 1.18 : 1.00); //automatic 18% gratuity when ordering 8 or more pizzas
+  runningTotal *= ((this.pizzas.length > 7) ? 1.18 : 1.00); //automatic 18% gratuity when ordering 8 or more pizzas
 
-  runningTotal.toFixed(2);
   this.price = runningTotal;
-  return runningTotal;
+  return runningTotal.toFixed(2);
 }
 Order.prototype.addPizza = function(pizza) {
   this.pizzas.push(pizza);
   this.setPrice();
 }
 
-function CustomPizza(dough, sauce, proteins, veggies, others, size, count) {
+function CustomPizza(size, dough, sauce, proteins, veggies, others, count) {
   this.dough = dough;
   this.sauce = sauce;
   this.proteins = proteins;
@@ -63,10 +62,11 @@ CustomPizza.prototype.setPrice = function() {
   runningTotal *= (this.size/10);
   runningTotal *= (this.count * ((this.count > 1) ? 0.9 : 1)); //multiple Za's of the same kind are discounted.
 
-  runningTotal.toFixed(2);
   this.price = runningTotal;
-  return runningTotal;
+  return runningTotal.toFixed(2);
 }
+
+
 
 //UI Logic
 let fullOrder = new Order();
@@ -74,24 +74,27 @@ $(document).ready(function() {
   $("form#custom-pizza").submit(function(event) {
     event.preventDefault();
 
+    const userSize = parseInt($("select#size").val());
+    const userDough = $("select#dough").val();
+    const userSauce = $("select#sauce").val();
     let userProteins = [];
+      $("input:checkbox[name=proteins]:checked").each(function() {
+        const protein = $(this).val();
+        userProteins.push(protein);
+      });
     let userVeggies = [];
+      $("input:checkbox[name=veggies]:checked").each(function() {
+        const veggie = $(this).val();
+        userVeggies.push(veggie);
+      });
     let userOthers = [];
+      $("input:checkbox[name=others]:checked").each(function() {
+        const other = $(this).val();
+        userOthers.push(other);
+      });
+    const userCount = parseInt($("input#count").val())
 
-    $("input:checkbox[name=proteins]:checked").each(function() {
-      const protein = $(this).val();
-      userProteins.push(protein);
-    });
-    $("input:checkbox[name=veggies]:checked").each(function() {
-      const veggie = $(this).val();
-      userVeggies.push(veggie);
-    });
-    $("input:checkbox[name=others]:checked").each(function() {
-      const other = $(this).val();
-      userOthers.push(other);
-    });
-
-    let newPizza = new CustomPizza(false, "Olive Oil", userProteins, userVeggies, userOthers, 8, 1);
+    let newPizza = new CustomPizza(userSize, userDough, userSauce, userProteins, userVeggies, userOthers, userCount);
     newPizza.setPrice();
     fullOrder.addPizza(newPizza);
   });

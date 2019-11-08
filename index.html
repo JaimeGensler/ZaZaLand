@@ -12,38 +12,63 @@
   <body>
     <h1>Za Za Land</h1>
 
-    <div id="create-za">
+    <div id="create-pizza">
 
-      <form id="custom-za">
+      <form id="custom-pizza">
+        <select class="form-control" id="size" required>
+          <option value="" disabled selected>Select your choice</option>
+          <option value="8">Eight-inch (8") 'Za</option>
+          <option value="10">Ten-inch (10") 'Za</option>
+          <option value="12">Twelve-inch (12") 'Za</option>
+        </select>
+        <select class="form-control" id="dough" required>
+          <option value="" disabled selected>Select your choice</option>
+          <option value="Standard">Standard Pizza Dough</option>
+          <option value="Gluten-Free">Gluten-Free Pizza Dough</option>
+        </select>
+        <select class="form-control" id="sauce" required>
+          <option value="" disabled selected>Select your choice</option>
+          <option>Rustic Marinara Sauce</option>
+          <option>Olive Oil</option>
+          <option>House-made Pesto Sauce</option>
+          <option>Mushroom Cream Sauce</option>
+          <option>NO Sauce</option>
+        </select>
         <div class="form-group">
+          <h3>Proteins</h3>
           <input type="checkbox" name="proteins" value="Pepperoni">Pepperoni<br>
           <input type="checkbox" name="proteins" value="Chorizo">Chorizo<br>
-          <input type="checkbox" name="proteins" value="Proscuitto">Proscuitto<br>
+          <input type="checkbox" name="proteins" value="Prosciutto">Prosciutto<br>
           <input type="checkbox" name="proteins" value="Ham">Ham<br>
           <input type="checkbox" name="proteins" value="Egg">Egg<br>
           <input type="checkbox" name="proteins" value="Vegan Sausage">Vegan Sausage<br>
         </div>
         <div class="form-group">
+          <h3>Veggies</h3>
           <input type="checkbox" name="veggies" value="Spinach">Spinach<br>
           <input type="checkbox" name="veggies" value="Black Olives">Black Olives<br>
           <input type="checkbox" name="veggies" value="Mushroom">Mushroom<br>
           <input type="checkbox" name="veggies" value="Kale">Kale<br>
           <input type="checkbox" name="veggies" value="Red Onion">Red Onion<br>
-          <input type="checkbox" name="veggies" value="Caramalized Onion">Caramalized Onion<br>
+          <input type="checkbox" name="veggies" value="Caramelized Onion">Caramelized Onion<br>
           <input type="checkbox" name="veggies" value="Bell Pepper">Bell Pepper<br>
           <input type="checkbox" name="veggies" value="Roasted Broccoli">Roasted Broccoli<br>
           <input type="checkbox" name="veggies" value="Kimchi">Kimchi<br>
           <input type="checkbox" name="veggies" value="Jalapeño">Jalapeño<br>
         </div>
         <div class="form-group">
+          <h3>Others</h3>
           <input type="checkbox" name="others" value="Feta Cheese">Feta Cheese<br>
-          <input type="checkbox" name="others" value="Sun-flower Seeds">Sun-flower Seeds<br>
+          <input type="checkbox" name="others" value="Sunflower Seeds">Sunflower Seeds<br>
           <input type="checkbox" name="others" value="Minced Garlic">Minced Garlic<br>
           <input type="checkbox" name="others" value="Basil">Basil<br>
           <input type="checkbox" name="others" value="Crushed Red Pepper">Crushed Red Pepper<br>
           <input type="checkbox" name="others" value="Olive Oil Drizzle">Olive Oil Drizzle<br>
         </div>
-        <button type="submit">Finish 'Za!</button>
+        <label for="count">How many would you like?</label>
+        <input type="number" name="count" min="1" max="12" id="count" value="1">
+        <br>
+        <button type="submit">Add This 'Za To My Order!</button>
       </form>
 
     </div>
