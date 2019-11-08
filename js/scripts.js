@@ -1,13 +1,14 @@
+//Business Logic
 function Order() {
   this.pizzas = [];
-  this.totalPrice = 0;
+  this.price = 0;
 }
-Order.totalPrice {
+Order.prototype.setPrice = function() {
   let runningTotal = 0;
   this.pizzas.forEach(function(pizza) {
     runningTotal += pizza.price;
   });
-  this.totalPrice = runningTotal;
+  this.price = runningTotal;
   return runningTotal;
 }
 
@@ -21,7 +22,7 @@ function CustomPizza(dough, sauce, proteins, veggies, others, size, count) {
   this.quantity = count;
   this.price = 0;
 }
-CustomPizza.prototype.setPrice() {
+CustomPizza.prototype.setPrice = function() {
   let runningTotal = 0; //dough selection does not factor in - Za Za Land doesn't punish people for having allergies.
   switch (this.sauce) {
     case "Rustic Marinara Sauce":
@@ -54,8 +55,9 @@ CustomPizza.prototype.setPrice() {
   return runningTotal;
 }
 
+//UI Logic
+let fullOrder = new Order();
 $(document).ready(function() {
-  let fullOrder = new Order();
   $("form#custom-za").submit(function(event) {
     event.preventDefault();
 
@@ -67,16 +69,18 @@ $(document).ready(function() {
       const protein = $(this).val();
       userProteins.push(protein);
     });
-    $("input:checkbox[name=proteins]:checked").each(function() {
+    $("input:checkbox[name=veggies]:checked").each(function() {
       const veggie = $(this).val();
       userVeggies.push(veggie);
     });
-    $("input:checkbox[name=proteins]:checked").each(function() {
+    $("input:checkbox[name=others]:checked").each(function() {
       const other = $(this).val();
       userOthers.push(other);
     });
 
-    let newPizza = new CusttomPizza(false, "Olive Oil", userProteins, userVeggies, userOthers, 8, 1);
-    newPizza.price();
+    let newPizza = new CustomPizza(false, "Olive Oil", userProteins, userVeggies, userOthers, 8, 1);
+    newPizza.setPrice();
+    fullOrder.pizzas.push(newPizza);
+    fullOrder.setPrice();
   });
 });
