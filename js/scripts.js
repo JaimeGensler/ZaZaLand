@@ -8,6 +8,8 @@ Order.prototype.setPrice = function() {
   this.pizzas.forEach(function(pizza) {
     runningTotal += pizza.price;
   });
+
+  runningTotal.toFixed(2);
   this.price = runningTotal;
   return runningTotal;
 }
@@ -19,38 +21,44 @@ function CustomPizza(dough, sauce, proteins, veggies, others, size, count) {
   this.veggies = veggies;
   this.others = others;
   this.size = size;
-  this.quantity = count;
+  this.count = count;
   this.price = 0;
 }
 CustomPizza.prototype.setPrice = function() {
-  let runningTotal = 0; //dough selection does not factor in - Za Za Land doesn't punish people for having allergies.
+  let runningTotal = 0; //dough and cheese selection do not factor in to price
   switch (this.sauce) {
     case "Rustic Marinara Sauce":
-      runningTotal += 0;
+      runningTotal += 7.00;
       break;
     case "Olive Oil":
-      runningTotal += 0;
+      runningTotal += 5.50;
       break;
     case "House-made Pesto Sauce":
-      runningTotal += 0;
+      runningTotal += 6.50;
       break;
     case "Mushroom Cream Sauce":
-      runningTotal += 0;
+      runningTotal += 7.00;
       break;
     case "NO Sauce":
-      runningTotal += 0;
+      runningTotal += 4.50;
       break;
   }
   this.proteins.forEach(function(protein) {
     runningTotal += 1.00;
+    if (protein === "Prosciutto") runningTotal += 1.00; //Prosciutto totals to $2.00
+    if (protein === "Egg") runningTotal -= 0.25; //Egg totals to $0.75
   });
   this.veggies.forEach(function(veggie) {
-    runningTotal += 0.50;
+    runningTotal += 0.25;
+    if (veggie === "Kimchi") runningTotal += 0.50; //Kimchi totals to $0.75
   });
   this.others.forEach(function(other) {
-    runningTotal += 0.25;
+    runningTotal += 0.15;
   });
-  runningTotal *= (this.quantity * ((this.quantity > 1) ? 0.9 : 1)); //multiple pizzas of the same kind are discounted.
+  runningTotal *= (this.size/10);
+  runningTotal *= (this.count * ((this.count > 1) ? 0.9 : 1)); //multiple Za's of the same kind are discounted.
+
+  runningTotal.toFixed(2);
   this.price = runningTotal;
   return runningTotal;
 }
