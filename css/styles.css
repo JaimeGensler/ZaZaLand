@@ -1,0 +1,44 @@
+@font-face {
+  font-family: "Yasashii-Bold";
+  src: url("../fonts/Yasashii-Bold.woff2") format("woff2"),
+  url("../fonts/Yasashii-Bold.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+@keyframes textGlow {
+  0% {
+    text-shadow: 0px 0px 15px rgba(255, 255, 255, 1);
+  } 45% {
+    text-shadow: 1px 1px 15px rgba(255, 255, 255, 0.5), 1px -1px 15px rgba(255, 255, 255, 0.5), -1px -1px 15px rgba(255, 255, 255, 0.5), -1px 1px 15px rgba(255, 255, 255, 0.5);
+  } 55% {
+    text-shadow: 1px 1px 15px rgba(255, 255, 255, 0.5), 1px -1px 15px rgba(255, 255, 255, 0.5), -1px -1px 15px rgba(255, 255, 255, 0.5), -1px 1px 15px rgba(255, 255, 255, 0.5);
+  } 100% {
+    text-shadow: 0px 0px 15px rgba(255, 255, 255, 1);
+  }
+}
+body{
+  background-color: black;
+}
+
+#header {
+  margin-top: 1em;
+  background-color: black;
+}
+h1, h4{
+  font-family: Yasashii-Bold, sans-serif;
+  text-align: center;
+  margin: 0px 0px 0px 0px;
+  color: rgba(255, 215, 0, 1);
+  text-shadow: 0px 0px 10px white;
+}
+h1 {
+  font-weight: bold;
+  font-size: 5em;
+  animation: textGlow 5s linear infinite;
+}
+h4 {
+  font-variant: small-caps;
+  font-style: italic;
+  padding-right: 40%;
+  font-size: 2em;
+}
