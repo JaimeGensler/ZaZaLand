@@ -72,6 +72,7 @@ CustomPizza.prototype.setPrice = function() {
 //UI Logic
 let fullOrder = new Order();
 $(document).ready(function() {
+
   $("form#custom-pizza").submit(function(event) {
     event.preventDefault();
 
@@ -102,6 +103,7 @@ $(document).ready(function() {
 
   //open/close modal
   $("p#create-pizza").click(function() {
+    $("#audio").get(0).play();
     $("div#new-pizza").css("display", "flex");
   });
   $("div#exit").click(function() {

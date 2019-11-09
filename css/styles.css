@@ -30,16 +30,14 @@
   }
 }
 
-#header {
-  margin-top: 1em;
-}
 body {
   background-image: url("../img/zazaland.jpg");
   background-size: cover;
   background-repeat: no-repeat;
-  background-color: rgba(0, 0, 0, 1);
+  background-color: black;
 }
 #header {
+  margin-top: 1em;
   margin: 5% 0% 0% 0%;
   width: 50%;
 }
@@ -56,6 +54,10 @@ h2 {
   font-size: 1.5em;
   margin-top: 0;
   margin-bottom: 20px;
+}
+audio {
+  float: right;
+  top: 0;
 }
 
 .row {
@@ -83,7 +85,7 @@ h2 {
   height: 1.8em;
   line-height: 1.8em;
 }
-.col-sm-9 p {
+.col-sm-10 p {
   text-align: left;
 }
 #create-pizza {
@@ -93,14 +95,14 @@ h2 {
 }
 #create-pizza:hover {
   animation: textGlow 1s linear infinite;
-  color: #ebebeb;
   cursor: pointer;
 }
+
 
 .modal-background {
   height: 100%;
   width: 100%;
-  background-color: rgba(0, 0, 0, 0.75);
+  background-color: rgba(0, 0, 0, 0.65);
   position: absolute;
   top: 0;
   display: flex;
@@ -117,12 +119,17 @@ h2 {
   position: relative;
   overflow-y:auto;
 }
+
 #new-pizza h2 {
   margin-top: 0px;
   color: black;
   margin-bottom: 20px;
   font-weight: bold;
   font-size: 2.5em;
+}
+#new-pizza h3 {
+  font-weight: bold;
+  font-variant: small-caps;
 }
 
 #exit h6 {
@@ -139,20 +146,13 @@ h2 {
   animation: pulse 0.8s linear infinite;
 }
 
-#pizza-image {
-  background-image: url("../img/za.jpg");
-  background-size: cover;
-  box-shadow: 0 0 10px 10px white inset;
-  margin-top: 20px;
-  height: 24em;
-  width: auto;
-}
-
 .col-sm-4 {
   padding-left: 3%;
   padding-right: 3%;
 }
-
+input[type="checkbox"] {
+  display: none;
+}
 label {
   cursor: pointer;
   border-radius: 15px;
@@ -160,18 +160,25 @@ label {
   padding: 5px 10px 5px 10px;
   font-weight: normal;
 }
-input[type="checkbox"] {
-  cursor: pointer;
-}
-
-.test {
-  background-color: green;
-}
-input[type="checkbox"] {
-  display: none;
-}
-
 .selected {
   border-color: rgba(207, 48, 48, 1);
   background-color: rgba(207, 48, 48, 0.1);
+}
+label[for="count"] {
+  border: 0px;
+  padding-left: 0px;
+}
+
+button {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#pizza-image {
+  background-image: url("../img/za.jpg");
+  background-size: cover;
+  box-shadow: 0 0 10px 10px white inset;
+  margin-top: 20px;
+  height: 24em;
+  width: auto;
 }
