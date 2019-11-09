@@ -170,8 +170,21 @@ label[for="count"] {
 }
 
 button {
+  margin-top: 1.8em;
+  display: block;
   margin-left: auto;
   margin-right: auto;
+  font-size: 1.5em;
+  font-variant: small-caps;
+  border-radius: 20px;
+  padding: 4px 12px 4px 12px;
+  font-weight: bold;
+}
+button:hover {
+  border-top: 2px solid #757575;
+  border-left: 2px solid #757575;
+  border-bottom: 0;
+  border-right: 0;
 }
 
 #pizza-image {
