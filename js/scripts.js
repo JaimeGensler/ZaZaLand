@@ -29,7 +29,7 @@ function CustomPizza(size, dough, sauce, proteins, veggies, others, count) {
   this.price = 0;
 }
 CustomPizza.prototype.setPrice = function() {
-  let runningTotal = 0; //dough and cheese selection do not factor in to price
+  let runningTotal = 0; //dough selection does not factor in to price
   switch (this.sauce) {
     case "Rustic Marinara Sauce":
       runningTotal += 7.00;
@@ -98,4 +98,9 @@ $(document).ready(function() {
     newPizza.setPrice();
     fullOrder.addPizza(newPizza);
   });
+
+  // $("label").on("click", function() {
+  //   if $(this).child()
+  //   $(this).attr("class", "test");
+  // });
 });
