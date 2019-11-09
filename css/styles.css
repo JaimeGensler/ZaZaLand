@@ -50,10 +50,33 @@ h1, h2 {
   animation: textGlow 3s linear infinite;
 }
 h1 {
-  font-weight: bold;
   font-size: 7em;
-} h2 {
+}
+h2 {
   font-size: 1.5em;
+}
+
+#order {
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 10px;
+  background-color: rgba(0, 0, 0, 0.25);
+  border: 1px solid black;
+}
+#order .row {
+  height: 4em;
+  color: white;
+  text-align: center;
+}
+#order #labels {
+  background-color: rgba(0, 0, 0, 0.25);
+  font-variant: small-caps;
+  padding-top: 5px;
+  height: 1.8em;
+}
+.col-sm-9 p {
+  text-align: left;
 }
 
 .modal-background {
