@@ -99,8 +99,11 @@ $(document).ready(function() {
     fullOrder.addPizza(newPizza);
   });
 
-  // $("label").on("click", function() {
-  //   if $(this).child()
-  //   $(this).attr("class", "test");
-  // });
+  //open/close modal
+  $("p#create-pizza").click(function() {
+    $("div#new-pizza").css("display", "flex");
+  });
+  $("div#exit").click(function() {
+    $("div#new-pizza").hide();
+  });
 });
