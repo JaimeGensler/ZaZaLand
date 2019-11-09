@@ -47,15 +47,22 @@ h1, h2 {
   color: white;
   text-align: center;
   font-family: Yasashii-Bold, sans-serif;
-  animation: textGlow 3s linear infinite;
+  animation: textGlow 4s linear infinite;
 }
 h1 {
   font-size: 7em;
 }
 h2 {
   font-size: 1.5em;
+  margin-top: 0;
+  margin-bottom: 20px;
 }
 
+.row {
+  width: 100%;
+  margin-left: 0;
+  margin-right: 0;
+}
 #order {
   width: 80%;
   margin-left: auto;
@@ -108,7 +115,16 @@ h2 {
   height: 80%;
   border-radius: 25px;
   position: relative;
+  overflow-y:auto;
 }
+#new-pizza h2 {
+  margin-top: 0px;
+  color: black;
+  margin-bottom: 20px;
+  font-weight: bold;
+  font-size: 2.5em;
+}
+
 #exit h6 {
   font-weight: bold;
   position: absolute;
@@ -122,14 +138,16 @@ h2 {
   color: red;
   animation: pulse 0.8s linear infinite;
 }
-h2 {
-  margin-top: 0px;
+
+#pizza-image {
+  background-image: url("../img/za.jpg");
+  background-size: cover;
+  box-shadow: 0 0 10px 10px white inset;
+  margin-top: 20px;
+  height: 24em;
+  width: auto;
 }
-.row {
-  width: 100%;
-  margin-left: 0;
-  margin-right: 0;
-}
+
 .col-sm-4 {
   padding-left: 3%;
   padding-right: 3%;
@@ -154,6 +172,6 @@ input[type="checkbox"] {
 }
 
 .selected {
-  border-color: rgba(42, 173, 33, 1);
-  background-color: rgba(42, 173, 33, 0.1);
+  border-color: rgba(207, 48, 48, 1);
+  background-color: rgba(207, 48, 48, 0.1);
 }

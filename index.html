@@ -31,16 +31,17 @@
         </div>
       </div>
       <div class="row">
-        <p id="create-pizza">Add More 'Za!</p>
+        <p id="create-pizza">Order Some 'Za!</p>
       </div>
     </div>
 
     <div id="new-pizza" class="modal-background">
       <div class="modal-content">
+        <h2>Create Your 'Za!</h2>
         <div id="exit">
           <h6>+</h6>
         </div>
-        <h2>Create Your 'Za!</h2>
+
         <form id="custom-pizza">
           <div class="row">
             <div class="col-sm-4">
@@ -70,38 +71,48 @@
             </div>
           </div>
           <div class="row">
-            <h3>Proteins</h3>
-            <div class="form-group">
-              <label><input type="checkbox" name="proteins" value="Pepperoni">Pepperoni</label>
-              <label><input type="checkbox" name="proteins" value="Chorizo">Chorizo</label>
-              <label><input type="checkbox" name="proteins" value="Prosciutto">Prosciutto</label>
-              <label><input type="checkbox" name="proteins" value="Ham">Ham</label>
-              <label><input type="checkbox" name="proteins" value="Egg">Egg</label>
-              <label><input type="checkbox" name="proteins" value="Vegan Sausage">Vegan Sausage</label>
+            <div class="col-sm-6">
+              <h3>Proteins</h3>
+              <div class="form-group">
+                <label><input type="checkbox" name="proteins" value="Pepperoni">Pepperoni</label>
+                <label><input type="checkbox" name="proteins" value="Chorizo">Chorizo</label>
+                <label><input type="checkbox" name="proteins" value="Prosciutto">Prosciutto</label>
+                <label><input type="checkbox" name="proteins" value="Ham">Ham</label>
+                <label><input type="checkbox" name="proteins" value="Egg">Egg</label>
+                <label><input type="checkbox" name="proteins" value="Vegan Sausage">Vegan Sausage</label>
+              </div>
+
+              <h3>Veggies</h3>
+              <div class="form-group">
+                <label><input type="checkbox" name="veggies" value="Caramelized Onion">Caramelized Onion</label>
+                <label><input type="checkbox" name="veggies" value="Black Olives">Black Olives</label>
+                <label><input type="checkbox" name="veggies" value="Mushroom">Mushroom</label>
+                <label><input type="checkbox" name="veggies" value="Kale">Kale</label>
+                <label><input type="checkbox" name="veggies" value="Red Onion">Red Onion</label>
+                <br>
+                <label><input type="checkbox" name="veggies" value="Spinach">Spinach</label>
+                <label><input type="checkbox" name="veggies" value="Bell Pepper">Bell Pepper</label>
+                <label><input type="checkbox" name="veggies" value="Roasted Broccoli">Roasted Broccoli</label>
+                <label><input type="checkbox" name="veggies" value="Kimchi">Kimchi</label>
+                <label><input type="checkbox" name="veggies" value="Jalapeño">Jalapeño</label>
+              </div>
+
+              <h3>Others</h3>
+              <div class="form-group">
+                <label><input type="checkbox" name="others" value="Feta Cheese">Feta Cheese</label>
+                <label><input type="checkbox" name="others" value="Sunflower Seeds">Sunflower Seeds</label>
+                <label><input type="checkbox" name="others" value="Minced Garlic">Minced Garlic</label>
+                <br>
+                <label><input type="checkbox" name="others" value="Basil">Basil</label>
+                <label><input type="checkbox" name="others" value="Crushed Red Pepper">Crushed Red Pepper</label>
+                <label><input type="checkbox" name="others" value="Olive Oil Drizzle">Olive Oil Drizzle</label>
+              </div>
+            </div>
+            <div class="col-sm-6">
+              <div id="pizza-image"></div>
             </div>
           </div>
-          <div class="form-group">
-            <h3>Veggies</h3>
-            <label><input type="checkbox" name="veggies" value="Spinach">Spinach</label>
-            <label><input type="checkbox" name="veggies" value="Black Olives">Black Olives</label>
-            <label><input type="checkbox" name="veggies" value="Mushroom">Mushroom</label>
-            <label><input type="checkbox" name="veggies" value="Kale">Kale</label>
-            <label><input type="checkbox" name="veggies" value="Red Onion">Red Onion</label>
-            <label><input type="checkbox" name="veggies" value="Caramelized Onion">Caramelized Onion</label>
-            <label><input type="checkbox" name="veggies" value="Bell Pepper">Bell Pepper</label>
-            <label><input type="checkbox" name="veggies" value="Roasted Broccoli">Roasted Broccoli</label>
-            <label><input type="checkbox" name="veggies" value="Kimchi">Kimchi</label>
-            <label><input type="checkbox" name="veggies" value="Jalapeño">Jalapeño</label>
-          </div>
-          <div class="form-group">
-            <h3>Others</h3>
-            <label><input type="checkbox" name="others" value="Feta Cheese">Feta Cheese</label>
-            <label><input type="checkbox" name="others" value="Sunflower Seeds">Sunflower Seeds</label>
-            <label><input type="checkbox" name="others" value="Minced Garlic">Minced Garlic</label>
-            <label><input type="checkbox" name="others" value="Basil">Basil</label>
-            <label><input type="checkbox" name="others" value="Crushed Red Pepper">Crushed Red Pepper</label>
-            <label><input type="checkbox" name="others" value="Olive Oil Drizzle">Olive Oil Drizzle</label>
-          </div>
+
           <label for="count">How many would you like?</label>
           <input type="number" name="count" min="1" max="12" id="count" value="1">
 
