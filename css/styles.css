@@ -34,7 +34,7 @@
   margin-top: 1em;
 }
 body {
-  background-image: url("../img/zazaland.jpg");
+  background-image: url("../img/zazaland2.jpg");
   background-size: cover;
   background-repeat: no-repeat;
   background-color: rgba(0, 0, 0, 1);
@@ -66,17 +66,23 @@ h2 {
 }
 #order .row {
   height: 4em;
+  line-height: 3em;
   color: white;
   text-align: center;
 }
 #order #labels {
   background-color: rgba(0, 0, 0, 0.25);
   font-variant: small-caps;
-  padding-top: 5px;
   height: 1.8em;
+  line-height: 1.8em;
 }
 .col-sm-9 p {
   text-align: left;
+}
+#pizza-creation:hover {
+  animation: textGlow 1s linear infinite;
+  color: #ebebeb;
+  cursor: pointer;
 }
 
 .modal-background {
