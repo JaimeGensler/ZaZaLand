@@ -99,7 +99,7 @@ h2 {
   display: flex;
   justify-content: center;
   align-items: center;
-  /* display: none; */
+  display: none;
 }
 .modal-content {
   background-color: white;
@@ -148,4 +148,12 @@ input[type="checkbox"] {
 
 .test {
   background-color: green;
+}
+input[type="checkbox"] {
+  display: none;
+}
+
+.selected {
+  border-color: rgba(42, 173, 33, 1);
+  background-color: rgba(42, 173, 33, 0.1);
 }

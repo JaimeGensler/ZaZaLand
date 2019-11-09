@@ -19,12 +19,12 @@ Order.prototype.addPizza = function(pizza) {
 }
 
 function CustomPizza(size, dough, sauce, proteins, veggies, others, count) {
+  this.size = size;
   this.dough = dough;
   this.sauce = sauce;
   this.proteins = proteins;
   this.veggies = veggies;
   this.others = others;
-  this.size = size;
   this.count = count;
   this.price = 0;
 }
@@ -49,7 +49,7 @@ CustomPizza.prototype.setPrice = function() {
   }
   this.proteins.forEach(function(protein) {
     runningTotal += 1.00;
-    if (protein === "Prosciutto") runningTotal += 1.00; //Prosciutto totals to $2.00
+    if (protein === "Prosciutto") runningTotal += 0.75; //Prosciutto totals to $1.75
     if (protein === "Egg") runningTotal -= 0.25; //Egg totals to $0.75
   });
   this.veggies.forEach(function(veggie) {
@@ -59,8 +59,9 @@ CustomPizza.prototype.setPrice = function() {
   this.others.forEach(function(other) {
     runningTotal += 0.15;
   });
-  runningTotal *= (this.size/10);
-  runningTotal *= (this.count * ((this.count > 1) ? 0.9 : 1)); //multiple Za's of the same kind are discounted.
+  runningTotal *= (this.size/10); //8" -> 80%, 10 " -> 100%, 12" -> 120%
+  const discount = ((this.count > 1) ? 0.9 : 1); //multiple pizzas of the same kind are discounted
+  runningTotal *= (this.count * discount);
 
   this.price = runningTotal;
   return runningTotal.toFixed(2);
@@ -105,5 +106,10 @@ $(document).ready(function() {
   });
   $("div#exit").click(function() {
     $("div#new-pizza").hide();
+  });
+
+  //checkbox display
+  $("input[type='checkbox']").on("change", function() {
+    $(this).parent().toggleClass("selected");
   });
 });
