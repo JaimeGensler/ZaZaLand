@@ -30,6 +30,20 @@
   }
 }
 
+#intro {
+  height: 100%;
+  width: 100%;
+  background-color: black;
+  position: absolute;
+  top: 0;
+  justify-content: center;
+  align-items: center;
+  padding-top: 10%;
+}
+#intro h1, #intro h2 {
+  display: none;
+}
+
 body {
   background-image: url("../img/zazaland.jpg");
   background-size: cover;
@@ -40,6 +54,7 @@ body {
   margin-top: 1em;
   margin: 5% 0% 0% 0%;
   width: 50%;
+  display: none;
 }
 h1, h2 {
   color: white;
@@ -59,6 +74,7 @@ audio {
   float: right bottom;
   top: 0;
   height: 20px;
+  display: none;
 }
 
 .row {
@@ -73,6 +89,7 @@ audio {
   margin-top: 10px;
   background-color: rgba(0, 0, 0, 0.25);
   border: 1px solid black;
+  display: none;
 }
 #order .row {
   height: 4em;

@@ -74,6 +74,18 @@ Pizza.prototype.setPrice = function() {
 $(document).ready(function() {
   let fullOrder = new Order();
 
+  //Intro screen display
+  $("div#intro h1").fadeIn(1500);
+  $("div#intro h2").delay(1000).fadeIn(1500);
+  $("div#intro").click(function() {
+    $("audio").show();
+    $("audio").get(0).play();
+    $("div#intro").fadeOut(1000);
+    $("div#header").delay(1000).fadeIn(1500);
+    $("div#order").delay(1500).fadeIn(1500);
+  });
+
+  //Pizza Creation
   $("form#custom-pizza").submit(function(event) {
     event.preventDefault();
 
@@ -106,7 +118,6 @@ $(document).ready(function() {
 
   //open/close modal
   $("p#create-pizza").click(function() {
-    $("audio").get(0).play();
     $("div#new-pizza").css("display", "flex");
   });
   $("div#exit").click(function() {
