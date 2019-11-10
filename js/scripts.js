@@ -1,6 +1,7 @@
-//Business Logic
+//Full Order Logic
 function Order() {
   this.pizzas = [];
+  this.totalCount = 0;
   this.price = 0;
 }
 Order.prototype.setPrice = function() {
@@ -8,16 +9,19 @@ Order.prototype.setPrice = function() {
   this.pizzas.forEach(function(pizza) {
     runningTotal += pizza.price;
   });
-  runningTotal *= ((this.pizzas.length > 7) ? 1.18 : 1.00); //automatic 18% gratuity when ordering 8 or more pizzas
+
+  runningTotal *= ((this.totalCount > 7) ? 1.18 : 1.00); //automatic 18% gratuity when ordering 8 or more pizzas
 
   this.price = runningTotal;
   return runningTotal.toFixed(2);
 }
 Order.prototype.addPizza = function(pizza) {
   this.pizzas.push(pizza);
+  this.totalCount += pizza.count;
   this.setPrice();
 }
 
+//Individual Pizza Logic
 function CustomPizza(size, cheese, sauce, proteins, veggies, others, count) {
   this.size = size;
   this.cheese = cheese;
@@ -29,38 +33,35 @@ function CustomPizza(size, cheese, sauce, proteins, veggies, others, count) {
   this.price = 0;
 }
 CustomPizza.prototype.setPrice = function() {
-  let runningTotal = 0; //cheese selection does not factor in to price
+  let runningTotal = Math.floor((this.size/2) + 1); //cheese selection does not factor in to price
+
   switch (this.sauce) {
     case "Rustic Marinara Sauce":
-      runningTotal += 7.00;
+      runningTotal += 2.00;
       break;
     case "Olive Oil":
-      runningTotal += 5.50;
+      runningTotal += 0.50;
       break;
     case "House-made Pesto Sauce":
-      runningTotal += 6.50;
+      runningTotal += 1.50;
       break;
     case "Mushroom Cream Sauce":
-      runningTotal += 7.00;
+      runningTotal += 2.00;
       break;
     case "NO Sauce":
-      runningTotal += 4.50;
+      runningTotal += 0;
       break;
   }
-  this.proteins.forEach(function(protein) {
-    runningTotal += 1.00;
-    if (protein === "Prosciutto") runningTotal += 0.75; //Prosciutto totals to $1.75
-    if (protein === "Egg") runningTotal -= 0.25; //Egg totals to $0.75
-  });
-  this.veggies.forEach(function(veggie) {
-    runningTotal += 0.25;
-    if (veggie === "Kimchi") runningTotal += 0.50; //Kimchi totals to $0.75
-  });
-  this.others.forEach(function(other) {
-    runningTotal += 0.15;
-  });
-  runningTotal *= (this.size/10); //8" -> 80%, 10 " -> 100%, 12" -> 120%
-  const discount = ((this.count > 1) ? 0.9 : 1); //multiple pizzas of the same kind are discounted
+
+  runningTotal += (this.proteins.length * 0.75);
+  runningTotal += (this.veggies.length * 0.25);
+  runningTotal += (this.others.length * 0.15);
+
+  if (this.proteins.includes("Prosciutto")) runningTotal += 0.75;
+  if (this.proteins.includes("Egg")) runningTotal -= 0.25;
+  if (this.veggies.includes("Kimchi")) runningTotal += 0.50;
+
+  const discount = ((this.count > 1) ? 0.9 : 1); //multiple pizzas of the same kind are discounted by 10%
   runningTotal *= (this.count * discount);
 
   this.price = runningTotal;
@@ -68,10 +69,9 @@ CustomPizza.prototype.setPrice = function() {
 }
 
 
-
 //UI Logic
-let fullOrder = new Order();
 $(document).ready(function() {
+  let fullOrder = new Order();
 
   $("form#custom-pizza").submit(function(event) {
     event.preventDefault();
@@ -105,7 +105,7 @@ $(document).ready(function() {
 
   //open/close modal
   $("p#create-pizza").click(function() {
-    $("#audio").get(0).play();
+    // $("#audio").get(0).play();
     $("div#new-pizza").css("display", "flex");
   });
   $("div#exit").click(function() {
