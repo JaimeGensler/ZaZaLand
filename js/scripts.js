@@ -22,7 +22,7 @@ Order.prototype.addPizza = function(pizza) {
 }
 
 //Individual Pizza Logic
-function CustomPizza(size, cheese, sauce, proteins, veggies, others, count) {
+function Pizza(size, cheese, sauce, proteins, veggies, others, count) {
   this.size = size;
   this.cheese = cheese;
   this.sauce = sauce;
@@ -32,7 +32,7 @@ function CustomPizza(size, cheese, sauce, proteins, veggies, others, count) {
   this.count = count;
   this.price = 0;
 }
-CustomPizza.prototype.setPrice = function() {
+Pizza.prototype.setPrice = function() {
   let runningTotal = Math.floor((this.size/2) + 1); //cheese selection does not factor in to price
 
   switch (this.sauce) {
@@ -70,6 +70,7 @@ CustomPizza.prototype.setPrice = function() {
 
 
 //UI Logic
+
 $(document).ready(function() {
   let fullOrder = new Order();
 
@@ -96,7 +97,7 @@ $(document).ready(function() {
       });
     const userCount = parseInt($("input#count").val())
 
-    const newPizza = new CustomPizza(userSize, userCheese, userSauce, userProteins, userVeggies, userOthers, userCount);
+    const newPizza = new Pizza(userSize, userCheese, userSauce, userProteins, userVeggies, userOthers, userCount);
     newPizza.setPrice();
     fullOrder.addPizza(newPizza);
 
@@ -105,7 +106,7 @@ $(document).ready(function() {
 
   //open/close modal
   $("p#create-pizza").click(function() {
-    // $("#audio").get(0).play();
+    $("audio").get(0).play();
     $("div#new-pizza").css("display", "flex");
   });
   $("div#exit").click(function() {
@@ -115,5 +116,14 @@ $(document).ready(function() {
   //checkbox display
   $("input[type='checkbox']").on("change", function() {
     $(this).parent().toggleClass("selected");
+  });
+
+  //gratuity warning
+  $("input#count").on("change", function() {
+    if ((parseInt($("input#count").val()) + fullOrder.totalCount) > 7) {
+      $("span#gratuity").text("An automatic gratuity of 18% is added to orders of 8 or more 'Za's.")
+    } else {
+      $("span#gratuity").text("");
+    }
   });
 });
