@@ -10,7 +10,7 @@
     <title>Za Za Land</title>
   </head>
   <body>
-    <audio id="audio" src="img/zazaland.mp3" loop="loop" controls></audio>
+    <audio src="img/zazaland.mp3" loop="loop" controls></audio>
     <div id="header">
       <h1>Za Za Land</h1>
       <h2>Award-winning 'Za!</h2>
@@ -39,52 +39,53 @@
         <div id="exit">
           <h6>+</h6>
         </div>
-        
+
         <form id="custom-pizza">
           <div class="row">
             <div class="col-sm-4">
               <select class="form-control" id="size" required>
                 <option value="" disabled selected>Select your size</option>
-                <option value="8">Little 'Za (8")</option>
-                <option value="10">Lotta 'Za (10")</option>
-                <option value="12">Oh My 'Za (12")</option>
-                <option value="15">'Za-Zilla (15")</option>
+                <option value="8">(8") Little 'Za — $5.00</option>
+                <option value="10">(10") Lotta 'Za — $6.00 </option>
+                <option value="12">(12") Oh My 'Za — $7.00</option>
+                <option value="15">(15") 'Za-Zilla — $8.00</option>
               </select>
             </div>
             <div class="col-sm-4">
               <select class="form-control" id="cheese" required>
                 <option value="" disabled selected>Select your cheese</option>
                 <option value="Standard">Standard Three-Cheese Blend</option>
-                <option value="Standard">Ricotta Mix</option>
-                <option value="Standard">Wisconsin Beer Cheese Blend</option>
-                <option value="Gluten-Free">NO Cheese</option>
+                <option value="Ricotta">Ricotta Mix</option>
+                <option value="Beer Cheese">Wisconsin Beer Cheese Blend</option>
+                <option value="NO Cheese">NO Cheese</option>
               </select>
             </div>
             <div class="col-sm-4">
               <select class="form-control" id="sauce" required>
                 <option value="" disabled selected>Select your sauce</option>
-                <option>Rustic Marinara Sauce</option>
-                <option>Olive Oil</option>
-                <option>House-made Pesto Sauce</option>
-                <option>Mushroom Cream Sauce</option>
-                <option>NO Sauce</option>
+                <option>Rustic Marinara Sauce — +$2.00</option>
+                <option>Olive Oil — +$0.50</option>
+                <option>House-made Pesto Sauce — +$1.50</option>
+                <option>Mushroom Cream Sauce — +$2.00</option>
+                <option>NO Sauce — +$0.00</option>
               </select>
             </div>
           </div>
 
           <div class="row">
             <div class="col-sm-6">
-              <h3>Proteins</h3>
+              <h3>Proteins <span>— 75¢/ea</span></h3>
               <div class="form-group">
                 <label><input type="checkbox" name="proteins" value="Pepperoni">Pepperoni</label>
-                <label><input type="checkbox" name="proteins" value="Chorizo">Chorizo</label>
-                <label><input type="checkbox" name="proteins" value="Prosciutto">Prosciutto</label>
                 <label><input type="checkbox" name="proteins" value="Ham">Ham</label>
-                <label><input type="checkbox" name="proteins" value="Egg">Egg</label>
+                <label><input type="checkbox" name="proteins" value="Prosciutto">Prosciutto <span>+75¢</span></label>
+                <br>
+                <label><input type="checkbox" name="proteins" value="Chorizo">Chorizo</label>
+                <label><input type="checkbox" name="proteins" value="Egg">Egg <span>-25¢</span></label>
                 <label><input type="checkbox" name="proteins" value="Vegan Sausage">Vegan Sausage</label>
               </div>
 
-              <h3>Veggies</h3>
+              <h3>Veggies <span>— 25¢/ea</span></h3>
               <div class="form-group">
                 <label><input type="checkbox" name="veggies" value="Caramelized Onion">Caramelized Onion</label>
                 <label><input type="checkbox" name="veggies" value="Black Olives">Black Olives</label>
@@ -95,11 +96,11 @@
                 <label><input type="checkbox" name="veggies" value="Spinach">Spinach</label>
                 <label><input type="checkbox" name="veggies" value="Bell Pepper">Bell Pepper</label>
                 <label><input type="checkbox" name="veggies" value="Roasted Broccoli">Roasted Broccoli</label>
-                <label><input type="checkbox" name="veggies" value="Kimchi">Kimchi</label>
+                <label><input type="checkbox" name="veggies" value="Kimchi">Kimchi <span>+50¢</span></label>
                 <label><input type="checkbox" name="veggies" value="Jalapeño">Jalapeño</label>
               </div>
 
-              <h3>Others</h3>
+              <h3>Others <span>— 15¢/ea</span></h3>
               <div class="form-group">
                 <label><input type="checkbox" name="others" value="Feta Cheese">Feta Cheese</label>
                 <label><input type="checkbox" name="others" value="Sunflower Seeds">Sunflower Seeds</label>
@@ -112,6 +113,8 @@
 
               <label for="count"><h3>How many would you like?</h3></label>
               <input type="number" name="count" min="1" max="12" id="count" value="1">
+              <br>
+              <span id="gratuity"></span>
             </div>
             <div class="col-sm-6">
               <div id="pizza-image"></div>

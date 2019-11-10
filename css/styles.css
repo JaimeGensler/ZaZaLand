@@ -99,7 +99,6 @@ audio {
   cursor: pointer;
 }
 
-
 .modal-background {
   height: 100%;
   width: 100%;
@@ -115,7 +114,7 @@ audio {
   background-color: white;
   padding: 10px 10px 10px 10px;
   width: 80%;
-  height: 80%;
+  height: 85%;
   border-radius: 25px;
   position: relative;
   overflow-y:auto;
@@ -131,6 +130,11 @@ audio {
 #new-pizza h3 {
   font-weight: bold;
   font-variant: small-caps;
+}
+#new-pizza span {
+  font-size: 0.7em;
+  color: rgba(0, 0, 0, 0.5);
+  font-style: italic;
 }
 
 #exit h6 {
@@ -151,6 +155,7 @@ audio {
   padding-left: 3%;
   padding-right: 3%;
 }
+
 input[type="checkbox"] {
   display: none;
 }
@@ -161,13 +166,33 @@ label {
   padding: 5px 10px 5px 10px;
   font-weight: normal;
 }
-.selected {
-  border-color: rgba(207, 48, 48, 1);
+label:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+label.selected {
+  border-color: rgba(207, 48, 48, 0.9);
   background-color: rgba(207, 48, 48, 0.1);
+}
+label.selected:hover {
+  border-color: rgba(207, 48, 48, 1);
+  background-color: rgba(207, 48, 48, 0.2);
 }
 label[for="count"] {
   border: 0px;
   padding-left: 0px;
+  cursor: auto;
+}
+label[for="count"]:hover {
+  background-color: rgba(0, 0, 0, 0);
+}
+
+#pizza-image {
+  background-image: url("../img/za.jpg");
+  background-size: cover;
+  box-shadow: 0 0 10px 10px white inset;
+  margin-top: 20px;
+  height: 25em;
+  width: auto;
 }
 
 button {
@@ -186,13 +211,4 @@ button:hover {
   border-left: 2px solid #757575;
   border-bottom: 0;
   border-right: 0;
-}
-
-#pizza-image {
-  background-image: url("../img/za.jpg");
-  background-size: cover;
-  box-shadow: 0 0 10px 10px white inset;
-  margin-top: 20px;
-  height: 24em;
-  width: auto;
 }
