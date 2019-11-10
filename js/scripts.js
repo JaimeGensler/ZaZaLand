@@ -18,9 +18,9 @@ Order.prototype.addPizza = function(pizza) {
   this.setPrice();
 }
 
-function CustomPizza(size, dough, sauce, proteins, veggies, others, count) {
+function CustomPizza(size, cheese, sauce, proteins, veggies, others, count) {
   this.size = size;
-  this.dough = dough;
+  this.cheese = cheese;
   this.sauce = sauce;
   this.proteins = proteins;
   this.veggies = veggies;
@@ -29,7 +29,7 @@ function CustomPizza(size, dough, sauce, proteins, veggies, others, count) {
   this.price = 0;
 }
 CustomPizza.prototype.setPrice = function() {
-  let runningTotal = 0; //dough selection does not factor in to price
+  let runningTotal = 0; //cheese selection does not factor in to price
   switch (this.sauce) {
     case "Rustic Marinara Sauce":
       runningTotal += 7.00;
@@ -77,7 +77,7 @@ $(document).ready(function() {
     event.preventDefault();
 
     const userSize = parseInt($("select#size").val());
-    const userDough = $("select#dough").val();
+    const userCheese = $("select#cheese").val();
     const userSauce = $("select#sauce").val();
     let userProteins = [];
       $("input:checkbox[name=proteins]:checked").each(function() {
@@ -96,9 +96,11 @@ $(document).ready(function() {
       });
     const userCount = parseInt($("input#count").val())
 
-    let newPizza = new CustomPizza(userSize, userDough, userSauce, userProteins, userVeggies, userOthers, userCount);
+    const newPizza = new CustomPizza(userSize, userCheese, userSauce, userProteins, userVeggies, userOthers, userCount);
     newPizza.setPrice();
     fullOrder.addPizza(newPizza);
+
+    $("div#new-pizza").hide();
   });
 
   //open/close modal
