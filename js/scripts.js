@@ -99,7 +99,7 @@ $(document).ready(function() {
   $("div#intro h2").delay(1000).fadeIn(1500);
   $("div#intro").click(function() {
     $("audio").show();
-    // $("audio").get(0).play();
+    $("audio").get(0).play();
     $("div#intro").fadeOut(1000);
     $("div#header").delay(1000).fadeIn(1500);
     $("div#order").delay(1500).fadeIn(1500);
@@ -135,7 +135,11 @@ $(document).ready(function() {
 
     displayPizza(newPizza);
     $("p#total-price").text("= " + order.price.toFixed(2));
-
+    if (order.totalCount > 7) {
+      $("span#gratuity").text("(18% added)");
+    } else {
+      $("span#gratuity").text("");
+    }
     $("div#new-pizza").hide();
   });
 
@@ -155,9 +159,9 @@ $(document).ready(function() {
   //gratuity warning
   $("input#count").on("change", function() {
     if ((parseInt($("input#count").val()) + order.totalCount) > 7) {
-      $("span#gratuity").text("An automatic gratuity of 18% is added to orders of 8 or more 'Za's.")
+      $("span#gratuity-warning").text("An automatic gratuity of 18% is added to orders of 8 or more 'Za's.")
     } else {
-      $("span#gratuity").text("");
+      $("span#gratuity-warning").text("");
     }
   });
 });
