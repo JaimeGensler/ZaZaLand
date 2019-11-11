@@ -70,9 +70,19 @@ Pizza.prototype.setPrice = function() {
 
 
 //UI Logic
+function displayPizza(pizza) {
+  const plural = ((pizza.count > 1) ? "s" : ""); //add s if multiple pizzas
+  let pizzaInfo = pizza.count + " " + pizza.size + '" ' + pizza.cheese + " pizza" + plural;
+  if (pizza.proteins || pizza.veggies || pizza.others) pizzaInfo += " with ";
+  if (pizza.protein) pizzaInfo += pizza.proteins.join(", ");
+  if (pizza.veggies) pizzaInfo += ", " + pizza.veggies.join(", ");
+  if (pizza.others) pizzaInfo += ", " + pizza.others.join(", ");
+  const fullDisplay = "<div class='row'><div class='col-sm-10'><p>" + pizzaInfo + "</p></div><div>" + pizza.price.toFixed(2) + "</div></div>";
+  $("div#labels").after(fullDisplay);
+}
 
 $(document).ready(function() {
-  let fullOrder = new Order();
+  const fullOrder = new Order();
 
   //Intro screen display
   $("div#intro h1").fadeIn(1500);
@@ -112,6 +122,9 @@ $(document).ready(function() {
     const newPizza = new Pizza(userSize, userCheese, userSauce, userProteins, userVeggies, userOthers, userCount);
     newPizza.setPrice();
     fullOrder.addPizza(newPizza);
+
+    displayPizza(newPizza);
+    $("p#total-price").text("$" + fullOrder.price.toFixed(2));
 
     $("div#new-pizza").hide();
   });

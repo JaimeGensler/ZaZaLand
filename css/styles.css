@@ -93,9 +93,15 @@ audio {
 }
 #order .row {
   height: 4em;
-  line-height: 2.5em;
+  font-size: 1em;
+  line-height: 2em;
   color: white;
   text-align: center;
+  padding-bottom: 5px;
+  padding-bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 #order #labels {
   background-color: rgba(0, 0, 0, 0.25);
@@ -103,8 +109,9 @@ audio {
   height: 1.8em;
   line-height: 1.8em;
 }
-.col-sm-10 p {
+.col-sm-10 {
   text-align: left;
+  overflow-y: auto;
 }
 #create-pizza {
   width: 10em;
@@ -114,6 +121,9 @@ audio {
 #create-pizza:hover {
   animation: textGlow 1s linear infinite;
   cursor: pointer;
+}
+#total-price {
+  border-top: 1px solid black;
 }
 
 .modal-background {
@@ -134,7 +144,7 @@ audio {
   height: 85%;
   border-radius: 25px;
   position: relative;
-  overflow-y:auto;
+  overflow-y: auto;
 }
 
 #new-pizza h2 {
