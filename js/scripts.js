@@ -71,25 +71,38 @@ Pizza.prototype.setPrice = function() {
 
 //UI Logic
 function displayPizza(pizza) {
+  //correctly concat all pizza items depending on toppings
   const plural = ((pizza.count > 1) ? "s" : ""); //add s if multiple pizzas
   let pizzaInfo = pizza.count + " " + pizza.size + '" ' + pizza.cheese + " pizza" + plural;
-  if (pizza.proteins || pizza.veggies || pizza.others) pizzaInfo += " with ";
-  if (pizza.protein) pizzaInfo += pizza.proteins.join(", ");
-  if (pizza.veggies) pizzaInfo += ", " + pizza.veggies.join(", ");
-  if (pizza.others) pizzaInfo += ", " + pizza.others.join(", ");
+  if (pizza.proteins || pizza.veggies || pizza.others) {
+    pizzaInfo += " with ";
+  }
+  if (pizza.protein) {
+    pizzaInfo += pizza.proteins.join(", ");
+  }
+  if (pizza.veggies || pizza.others) {
+    pizzaInfo += ", ";
+  }
+  if (pizza.veggies) {
+    pizzaInfo += pizza.veggies.join(", ");
+  }
+  if (pizza.others) {
+    pizzaInfo += ", " + pizza.others.join(", ");
+  }
+
   const fullDisplay = "<div class='row'><div class='col-sm-10'><p>" + pizzaInfo + "</p></div><div>" + pizza.price.toFixed(2) + "</div></div>";
   $("div#labels").after(fullDisplay);
 }
 
+const order = new Order();
 $(document).ready(function() {
-  const fullOrder = new Order();
 
   //Intro screen display
   $("div#intro h1").fadeIn(1500);
   $("div#intro h2").delay(1000).fadeIn(1500);
   $("div#intro").click(function() {
     $("audio").show();
-    $("audio").get(0).play();
+    // $("audio").get(0).play();
     $("div#intro").fadeOut(1000);
     $("div#header").delay(1000).fadeIn(1500);
     $("div#order").delay(1500).fadeIn(1500);
@@ -121,10 +134,10 @@ $(document).ready(function() {
 
     const newPizza = new Pizza(userSize, userCheese, userSauce, userProteins, userVeggies, userOthers, userCount);
     newPizza.setPrice();
-    fullOrder.addPizza(newPizza);
+    order.addPizza(newPizza);
 
     displayPizza(newPizza);
-    $("p#total-price").text("$" + fullOrder.price.toFixed(2));
+    $("p#total-price").text(order.price.toFixed(2));
 
     $("div#new-pizza").hide();
   });
@@ -144,7 +157,7 @@ $(document).ready(function() {
 
   //gratuity warning
   $("input#count").on("change", function() {
-    if ((parseInt($("input#count").val()) + fullOrder.totalCount) > 7) {
+    if ((parseInt($("input#count").val()) + order.totalCount) > 7) {
       $("span#gratuity").text("An automatic gratuity of 18% is added to orders of 8 or more 'Za's.")
     } else {
       $("span#gratuity").text("");
