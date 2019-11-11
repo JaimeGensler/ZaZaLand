@@ -74,19 +74,16 @@ function displayPizza(pizza) {
   //correctly concat all pizza items depending on toppings
   const plural = ((pizza.count > 1) ? "s" : ""); //add s if multiple pizzas
   let pizzaInfo = pizza.count + " " + pizza.size + '" ' + pizza.cheese + " pizza" + plural;
-  if (pizza.proteins || pizza.veggies || pizza.others) {
+  if (pizza.proteins.length > 0 || pizza.veggies.length > 0 || pizza.others.length > 0) {
     pizzaInfo += " with ";
   }
-  if (pizza.protein) {
+  if (pizza.proteins.length > 0) {
     pizzaInfo += pizza.proteins.join(", ");
   }
-  if (pizza.veggies || pizza.others) {
-    pizzaInfo += ", ";
+  if (pizza.veggies.length > 0) {
+    pizzaInfo += ", " + pizza.veggies.join(", ");
   }
-  if (pizza.veggies) {
-    pizzaInfo += pizza.veggies.join(", ");
-  }
-  if (pizza.others) {
+  if (pizza.others.length > 0) {
     pizzaInfo += ", " + pizza.others.join(", ");
   }
 
@@ -137,7 +134,7 @@ $(document).ready(function() {
     order.addPizza(newPizza);
 
     displayPizza(newPizza);
-    $("p#total-price").text(order.price.toFixed(2));
+    $("p#total-price").text("= " + order.price.toFixed(2));
 
     $("div#new-pizza").hide();
   });
